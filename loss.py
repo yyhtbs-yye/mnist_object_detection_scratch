@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 class YoloLoss(nn.Module):
     def __init__(self, S=7, B=2, C=10, lambda_coord=5, lambda_noobj=0.5):
@@ -42,14 +43,12 @@ class YoloLoss(nn.Module):
         )
         # No-object confidence loss (where no objects exist)
         noobj_conf_loss = self.lambda_noobj * torch.sum(
-            (target_box_coords[..., 4] - pred_box_coords[..., 4])**2 * noobj_mask
+            (pred_box_coords[..., 4])**2 * noobj_mask
         )
 
         # 3. Classification Loss
         # Only for the bounding boxes where objects exist (obj_mask)
-        class_loss = torch.sum(
-            (target_class_probs - pred_class_probs)**2 * obj_mask.unsqueeze(-1)
-        )
+        class_loss = F.cross_entropy(pred_class_probs[obj_mask], target_class_probs[obj_mask])
 
         # Total loss is the sum of the localization, confidence, and classification losses
         total_loss = coord_loss + obj_conf_loss + noobj_conf_loss + class_loss

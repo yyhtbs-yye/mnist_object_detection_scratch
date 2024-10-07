@@ -85,4 +85,5 @@ if __name__ == '__main__':
             }, checkpoint_path)
             print(f"Model checkpoint saved at epoch {epoch + 1}")
 
-        print(f"EPOCH@{epoch}, total_loss: {total_loss}")
+        avg_loss = total_loss / len(dataloader)
+        print(f"EPOCH@{epoch + 1}, avg_loss: {avg_loss}")
