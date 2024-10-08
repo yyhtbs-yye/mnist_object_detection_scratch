@@ -33,10 +33,10 @@ if __name__ == '__main__':
     coco_dataset = CocoDetection(root=root_dir, annFile=ann_file, transform=transform)
 
     # Create a DataLoader to load the dataset in batches
-    dataloader = DataLoader(coco_dataset, batch_size=8, shuffle=True,
+    dataloader = DataLoader(coco_dataset, batch_size=16, shuffle=True,
                             num_workers=1, collate_fn=collate_fn)
 
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda:2' if torch.cuda.is_available() else 'cpu')
 
     S, B, C = 5, 1, 10
     H, W = 256, 256

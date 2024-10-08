@@ -9,20 +9,19 @@ import numpy as np
 from visualization import visualize_annotations
 
 # Define the model parameters
-S = 7  # Grid size
-B = 2  # Number of bounding boxes per cell
-C = 10  # Number of classes (in your case)
+S, B, C = 5, 1, 10
+
 
 # Initialize your model
 model = YOLO(grid_size=S, num_bboxes=B, num_classes=C)  # Make sure this matches your model class
 
 # Load model weights
-checkpoint_path = r'model_checkpoints\model_epoch_100.pth'  # Path to your model checkpoint
+checkpoint_path = 'model_checkpoints/model_epoch_10000.pth'  # Path to your model checkpoint
 checkpoint = torch.load(checkpoint_path)
 model.load_state_dict(checkpoint['model_state_dict'])
 
 # Move the model to the desired device
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cuda:2' if torch.cuda.is_available() else 'cpu')
 model = model.to(device)
 
 # Set the model to evaluation mode
@@ -39,8 +38,8 @@ ann_file = 'mnist_object_detection_dataset/test/annotations/coco_annotations_wit
 coco_dataset = CocoDetection(root=root_dir, annFile=ann_file, transform=transform)
 
 # Move the image to the device (CPU/GPU)
-image = coco_dataset[560][0].to(device)
-gt_annotations = coco_dataset[560][1]
+image = coco_dataset[124][0].to(device)
+gt_annotations = coco_dataset[124][1]
 
 # Forward pass through the model
 with torch.no_grad():
