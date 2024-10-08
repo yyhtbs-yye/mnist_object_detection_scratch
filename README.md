@@ -51,7 +51,7 @@ python train.py
 
 You can configure various settings like dataset paths, hyperparameters, and the number of epochs in the script.
 
-Inference
+# Inference
 Once the model is trained, you can use it for inference on new images:
 
 ```python
@@ -103,7 +103,7 @@ The training script loads the dataset, performs preprocessing, and trains the mo
 - Backpropagation: The optimizer updates the model weights based on the computed loss.
 - Model checkpoints are saved every 100 epochs in the model_checkpoints/ directory.
 
-## Evaluation
+## Evaluation (not implemented Yet, mAP metric)
 To evaluate the model on new images or a test dataset, load the trained model and perform inference using the test images. The evaluation script will generate predictions and compare them against ground truth annotations.
 
 ## Contributing
