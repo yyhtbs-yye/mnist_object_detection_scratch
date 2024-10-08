@@ -51,7 +51,7 @@ python train.py
 
 You can configure various settings like dataset paths, hyperparameters, and the number of epochs in the script.
 
-# Inference
+### Inference
 Once the model is trained, you can use it for inference on new images:
 
 ```python
