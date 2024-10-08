@@ -13,8 +13,6 @@ The model is trained using customized COCO-format annotations and can detect obj
 - [Usage](#usage)
 - [Dataset Preparation](#dataset-preparation)
 - [Model Architecture](#model-architecture)
-- [Training](#training)
-- [Evaluation](#evaluation)
 - [Contributing](#contributing)
 - [License](#license)
 
