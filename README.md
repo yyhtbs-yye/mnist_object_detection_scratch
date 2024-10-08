@@ -98,10 +98,10 @@ For detailed information about the architecture, refer to model.py.
 ## Training
 The training script loads the dataset, performs preprocessing, and trains the model using Adam optimizer and a custom YOLO loss function. The key training steps are:
 
-Forward pass: The images are passed through the YOLO model to predict bounding boxes and class probabilities.
-Loss Calculation: The custom YoloLoss function computes the loss based on localization (bounding box coordinates), confidence, and classification loss.
-Backpropagation: The optimizer updates the model weights based on the computed loss.
-Model checkpoints are saved every 100 epochs in the model_checkpoints/ directory.
+- Forward pass: The images are passed through the YOLO model to predict bounding boxes and class probabilities.
+- Loss Calculation: The custom YoloLoss function computes the loss based on localization (bounding box coordinates), confidence, and classification loss.
+- Backpropagation: The optimizer updates the model weights based on the computed loss.
+- Model checkpoints are saved every 100 epochs in the model_checkpoints/ directory.
 
 ## Evaluation
 To evaluate the model on new images or a test dataset, load the trained model and perform inference using the test images. The evaluation script will generate predictions and compare them against ground truth annotations.
